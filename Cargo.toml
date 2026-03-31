@@ -6,7 +6,7 @@ authors = ["Pink Pixel <admin@pinkpixel.dev>"]
 license = "Apache-2.0"
 description = "Parfait is a modern image converter with support for WebP, AVIF, HEIF, and traditional formats"
 homepage = "https://pinkpixel.dev"
-repository = "https://github.com/pinkpixel-dev/pixelconvert"
+repository = "https://github.com/pinkpixel-dev/parfait"
 
 [dependencies]
 # GTK4 and Libadwaita

@@ -10,7 +10,7 @@
   [![Brand](https://img.shields.io/badge/Pink%20Pixel-Parfait-ec4899)](https://pinkpixel.dev)
 </div>
 
-Parfait keeps the same Rust + GTK4 + Libadwaita foundation this project already had, but now ships with the new `Parfait` app name, `dev.pinkpixel.Parfait` app ID, refreshed Flatpak icons derived from [`logo.png`](logo.png), and updated desktop metadata ahead of Flathub submission.
+Parfait keeps the same Rust + GTK4 + Libadwaita foundation this project already had, but now ships with the new `Parfait` app name, `dev.pinkpixel.Parfait` app ID, refreshed Flatpak icons regenerated from the corrected transparent [`logo.png`](logo.png), and updated desktop metadata ahead of Flathub submission.
 
 ## ✨ Highlights
 
@@ -40,7 +40,7 @@ flatpak install flathub dev.pinkpixel.Parfait
 
 ### Build from Source
 
-The repository path may still be `pixelconvert` until the GitHub repository itself is renamed, but the built application and binary are now `Parfait` / `parfait`.
+The built application and binary are now `Parfait` / `parfait`, and the project is expected to live in the `parfait` repository.
 
 #### Requirements
 
@@ -68,8 +68,8 @@ sudo dnf install rust cargo gtk4-devel libadwaita-devel meson nasm pkg-config
 #### Build commands
 
 ```bash
-git clone https://github.com/pinkpixel-dev/pixelconvert.git
-cd pixelconvert
+git clone https://github.com/pinkpixel-dev/parfait.git
+cd parfait
 
 # Cargo
 cargo build --release
@@ -104,6 +104,7 @@ meson install -C builddir
 - Cargo package: `parfait`
 - Desktop/Flatpak app ID: `dev.pinkpixel.Parfait`
 - Flatpak manifest: [`dev.pinkpixel.Parfait.yml`](dev.pinkpixel.Parfait.yml)
+- Flatpak icon sources: `logo.png` -> `data/icons/dev.pinkpixel.Parfait-{16,32,48,64,128,512}.png` and `data/icons/dev.pinkpixel.Parfait.png` for `256x256`
 - Vendored cargo sources: [`parfait-cargo-sources.json`](parfait-cargo-sources.json) and [`rav1e-cargo-sources.json`](rav1e-cargo-sources.json)
 
 ## 📚 Documentation
@@ -118,7 +119,7 @@ meson install -C builddir
 
 - Website: https://pinkpixel.dev
 - GitHub: https://github.com/pinkpixel-dev
-- Issues: https://github.com/pinkpixel-dev/pixelconvert/issues
+- Issues: https://github.com/pinkpixel-dev/parfait/issues
 - Support: support@pinkpixel.dev
 
 ---

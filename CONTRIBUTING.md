@@ -7,13 +7,13 @@ Thanks for helping improve Parfait. This guide covers the current development wo
 - Product name: `Parfait`
 - Cargo package: `parfait`
 - Flatpak app ID: `dev.pinkpixel.Parfait`
-- Current repository URL: `https://github.com/pinkpixel-dev/pixelconvert`
+- Current repository URL: `https://github.com/pinkpixel-dev/parfait`
 
 ## Local Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/pixelconvert.git
-cd pixelconvert
+git clone https://github.com/YOUR_USERNAME/parfait.git
+cd parfait
 ```
 
 Install the platform dependencies your distro needs, then use the standard Rust + Meson flow:
@@ -51,12 +51,14 @@ When you change functionality or packaging, update:
 - `CHANGELOG.md`
 - `OVERVIEW.md`
 - `ROADMAP.md`
+- `dev/OVERVIEW.md`
+- `dev/CHANGELOG.md`
 - relevant files in `dev/`
 
 ## Project Structure
 
 ```text
-pixelconvert/
+parfait/
 ├── src/
 │   ├── main.rs
 │   ├── window.rs
@@ -92,6 +94,7 @@ Before opening a PR, verify:
 - All format options convert successfully
 - The output directory chooser behaves correctly
 - About dialog and desktop metadata show the new brand
+- The launcher and software-center icon use the transparent circular artwork without the old square background
 - Flatpak metadata still validates after any packaging edit
 
 Thanks for contributing to Parfait and helping Pink Pixel get it ready for Flathub.
