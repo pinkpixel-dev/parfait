@@ -36,6 +36,18 @@ flatpak-builder --user --install --force-clean build-dir dev.pinkpixel.Parfait.y
 flatpak run dev.pinkpixel.Parfait
 ```
 
+### Native Linux Packages
+
+```bash
+./packaging/linux/build-packages.sh appimage
+```
+
+The native packaging flow currently focuses on a tested AppImage path. It stages
+the Meson install tree under `dist/linux-packages/`, then turns that staged
+layout into an AppImage with `appimagetool`. CI uses the same script through
+`.github/workflows/linux-packages.yml`. The final distributable file lands at
+`dist/linux-packages/artifacts/Parfait.AppImage`.
+
 The current manifest is pinned to the remote `v1.0.0` git tag so local Flatpak
 tests match the tagged release snapshot on GitHub. You do not need a published
 GitHub Release page for `flatpak-builder`; the pushed git tag is the important
@@ -59,6 +71,7 @@ When you change functionality or packaging, update:
 - `dev/OVERVIEW.md`
 - `dev/ROADMAP.md`
 - `dev/FLATHUB-SUBMISSION-GUIDE.md`
+- `dev/LINUX-PACKAGING.md`
 - relevant files in `dev/`
 
 ## Project Structure
@@ -78,6 +91,12 @@ parfait/
 │   ├── dev.pinkpixel.Parfait.metainfo.xml.in
 │   └── dev.pinkpixel.Parfait.gschema.xml
 ├── dev.pinkpixel.Parfait.yml
+├── packaging/
+│   └── linux/
+│       ├── AppRun
+│       ├── build-packages.sh
+│       ├── nfpm.yaml
+│       └── scripts/
 ├── parfait-cargo-sources.json
 ├── rav1e-cargo-sources.json
 └── meson.build
@@ -102,5 +121,7 @@ Before opening a PR, verify:
 - About dialog and desktop metadata show the new brand
 - The launcher and software-center icon use the transparent circular artwork without the old square background
 - Flatpak metadata still validates after any packaging edit
+- Native package artifacts build successfully when packaging metadata changes
+- The AppImage launches successfully after packaging changes
 
-Thanks for contributing to Parfait and helping Pink Pixel get it ready for Flathub.
+Thanks for contributing to Parfait and helping Pink Pixel keep its Linux release flow polished.

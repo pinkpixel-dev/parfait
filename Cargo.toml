@@ -4,7 +4,7 @@ version = "1.0.0"
 edition = "2021"
 authors = ["Pink Pixel <admin@pinkpixel.dev>"]
 license = "Apache-2.0"
-description = "Parfait is a modern image converter with support for WebP, AVIF, HEIF, and traditional formats"
+description = "Parfait is a modern image converter with support for WebP, AVIF, and traditional formats"
 homepage = "https://pinkpixel.dev"
 repository = "https://github.com/pinkpixel-dev/parfait"
 

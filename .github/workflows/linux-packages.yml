@@ -1,0 +1,54 @@
+name: Linux AppImage
+
+on:
+  workflow_dispatch:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install Linux packaging dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            curl \
+            libadwaita-1-dev \
+            libglib2.0-bin \
+            libgtk-4-dev \
+            meson \
+            nasm \
+            pkg-config
+
+      - name: Build AppImage artifact
+        run: ./packaging/linux/build-packages.sh appimage
+
+      - name: Upload workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: parfait-appimage-amd64
+          path: dist/linux-packages/artifacts/*.AppImage
+          if-no-files-found: error
+
+      - name: Attach artifacts to the GitHub release
+        if: github.event_name == 'release'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" \
+            dist/linux-packages/artifacts/* \
+            --clobber

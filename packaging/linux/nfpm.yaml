@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=https://nfpm.goreleaser.com/schema.json
+name: "parfait"
+arch: "${NFPM_ARCH}"
+platform: "linux"
+version: "${PARFAIT_VERSION}"
+version_schema: "semver"
+release: "1"
+section: "graphics"
+priority: "optional"
+maintainer: "Pink Pixel <admin@pinkpixel.dev>"
+description: |
+  Parfait is a polished GTK4 image converter for Linux.
+  It supports PNG, JPEG, WebP, AVIF, GIF, BMP, TIFF, and ICO with
+  batch conversion and custom output directory selection.
+vendor: "Pink Pixel"
+homepage: "https://pinkpixel.dev"
+license: "Apache-2.0"
+
+contents:
+  - src: ./dist/linux-packages/stage/usr/bin/parfait
+    dst: /usr/bin/parfait
+    file_info:
+      mode: 0755
+
+  - src: ./dist/linux-packages/stage/usr/share/applications/dev.pinkpixel.Parfait.desktop
+    dst: /usr/share/applications/dev.pinkpixel.Parfait.desktop
+
+  - src: ./dist/linux-packages/stage/usr/share/metainfo/dev.pinkpixel.Parfait.metainfo.xml
+    dst: /usr/share/metainfo/dev.pinkpixel.Parfait.metainfo.xml
+
+  - src: ./dist/linux-packages/stage/usr/share/glib-2.0/schemas/dev.pinkpixel.Parfait.gschema.xml
+    dst: /usr/share/glib-2.0/schemas/dev.pinkpixel.Parfait.gschema.xml
+
+  - src: ./dist/linux-packages/stage/usr/share/icons/hicolor
+    dst: /usr/share/icons/hicolor
+    type: tree
+
+  - src: ./README.md
+    dst: /usr/share/doc/parfait/README.md
+    type: doc
+    packager: rpm
+
+  - src: ./README.md
+    dst: /usr/share/doc/parfait/README.md
+    packager: deb
+
+  - src: ./LICENSE
+    dst: /usr/share/licenses/parfait/LICENSE
+    type: license
+    packager: rpm
+
+  - src: ./LICENSE
+    dst: /usr/share/doc/parfait/copyright
+    packager: deb
+
+depends:
+  - libgtk-4-1
+  - libadwaita-1-0
+  - libglib2.0-bin
+
+overrides:
+  rpm:
+    depends:
+      - gtk4
+      - libadwaita
+      - glib2
+    scripts:
+      postinstall: ./packaging/linux/scripts/postinstall.sh
+      postremove: ./packaging/linux/scripts/postremove.sh
+  deb:
+    depends:
+      - libgtk-4-1
+      - libadwaita-1-0
+      - libglib2.0-bin
+    scripts:
+      postinstall: ./packaging/linux/scripts/postinstall.sh
+      postremove: ./packaging/linux/scripts/postremove.sh

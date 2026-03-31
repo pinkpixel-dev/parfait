@@ -33,6 +33,7 @@ Thumbs.db
 
 # Other
 /dev/
+/dist/
 CHANGELOG.md
 OVERVIEW.md
 ROADMAP.md

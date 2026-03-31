@@ -10,7 +10,7 @@
   [![Brand](https://img.shields.io/badge/Pink%20Pixel-Parfait-ec4899)](https://pinkpixel.dev)
 </div>
 
-Parfait keeps the same Rust + GTK4 + Libadwaita foundation this project already had, but now ships with the new `Parfait` app name, `dev.pinkpixel.Parfait` app ID, refreshed Flatpak icons regenerated from the corrected transparent [`logo.png`](logo.png), and updated desktop metadata ahead of Flathub submission.
+Parfait keeps the same Rust + GTK4 + Libadwaita foundation this project already had, but now ships with the new `Parfait` app name, `dev.pinkpixel.Parfait` app ID, refreshed Flatpak icons regenerated from the corrected transparent [`logo.png`](logo.png), and a working AppImage release path alongside the repository Flatpak manifest.
 
 ## ✨ Highlights
 
@@ -18,37 +18,77 @@ Parfait keeps the same Rust + GTK4 + Libadwaita foundation this project already 
 - Batch-process multiple files with threaded background conversion
 - Choose quality levels and output formats from a clean Libadwaita UI
 - Pick a custom output folder or save beside the original files
-- Launch as `Parfait` with the new Flatpak app ID `dev.pinkpixel.Parfait`
+- Ship with a simple downloadable AppImage and a source-build Flatpak option
 
 ## 🖼️ Screenshots
 
 <div align="center">
-  <img src="data/screenshots/main-window.png" alt="Parfait main window" width="700">
+  <img src="data/screenshots/opening-screen.png" alt="Parfait opening screen" width="700">
   <br><br>
-  <img src="data/screenshots/batch-processing.png" alt="Parfait batch conversion in progress" width="700">
+  <img src="data/screenshots/convert-page.png" alt="Parfait convert page with selected images and conversion settings" width="700">
+  <br><br>
+  <img src="data/screenshots/conversion-success.png" alt="Parfait showing a successful image conversion" width="700">
 </div>
 
 ## 📦 Installation
 
-### Flatpak
+### AppImage
 
-Parfait is not on Flathub yet. The reserved app ID is:
+The easiest way to install Parfait is the downloadable AppImage.
+
+1. Download `Parfait.AppImage` from the latest GitHub release.
+2. Make it executable:
 
 ```bash
-dev.pinkpixel.Parfait
+chmod +x Parfait.AppImage
 ```
 
-To build and install the tagged Flatpak locally:
+3. Run it:
 
 ```bash
+./Parfait.AppImage
+```
+
+For local packaging or rebuilding the AppImage from source:
+
+- GitHub Releases can attach a downloadable AppImage automatically through [`linux-packages.yml`](.github/workflows/linux-packages.yml)
+- Local packaging reuses the Meson install tree through [`packaging/linux/build-packages.sh`](packaging/linux/build-packages.sh)
+- The AppImage is assembled with `appimagetool` from a staged AppDir plus the custom [`AppRun`](packaging/linux/AppRun)
+
+To build the AppImage locally:
+
+```bash
+./packaging/linux/build-packages.sh appimage
+```
+
+Artifacts are written to:
+
+```bash
+dist/linux-packages/artifacts/
+```
+
+The distributable AppImage filename is:
+
+```bash
+dist/linux-packages/artifacts/Parfait.AppImage
+```
+
+The repo still keeps [`packaging/linux/nfpm.yaml`](packaging/linux/nfpm.yaml) as
+future scaffolding for `.deb` and `.rpm`, but the only packaged installer path
+validated in this repo right now is AppImage.
+
+Full local packaging notes live in [`dev/LINUX-PACKAGING.md`](dev/LINUX-PACKAGING.md).
+
+### Flatpak From Source
+
+If you prefer a Flatpak build, clone the repo and build it locally:
+
+```bash
+git clone https://github.com/pinkpixel-dev/parfait.git
+cd parfait
 flatpak-builder --user --install --force-clean build-dir dev.pinkpixel.Parfait.yml
 flatpak run dev.pinkpixel.Parfait
 ```
-
-The manifest is now pinned to the remote `v1.0.0` git tag on
-`pinkpixel-dev/parfait`, so `flatpak-builder` packages the same tagged snapshot
-you pushed to GitHub. A published GitHub Release page is optional for this build
-path.
 
 ### Build from Source
 
@@ -62,6 +102,8 @@ The built application and binary are now `Parfait` / `parfait`, and the project 
 - Meson
 - NASM
 - pkg-config
+- `glib-compile-schemas` for staged GSettings validation
+- `appimagetool` is downloaded automatically for `x86_64` AppImage builds
 
 #### Example dependency install
 
@@ -117,6 +159,9 @@ meson install -C builddir
 - Desktop/Flatpak app ID: `dev.pinkpixel.Parfait`
 - Flatpak manifest: [`dev.pinkpixel.Parfait.yml`](dev.pinkpixel.Parfait.yml)
 - Flatpak manifest currently targets the remote `v1.0.0` git tag
+- AppImage builder: [`packaging/linux/build-packages.sh`](packaging/linux/build-packages.sh)
+- Optional future native package config: [`packaging/linux/nfpm.yaml`](packaging/linux/nfpm.yaml)
+- Release workflow: [`.github/workflows/linux-packages.yml`](.github/workflows/linux-packages.yml)
 - Flatpak icon sources: `logo.png` -> `data/icons/dev.pinkpixel.Parfait-{16,32,48,64,128,512}.png` and `data/icons/dev.pinkpixel.Parfait.png` for `256x256`
 - Vendored cargo sources: [`parfait-cargo-sources.json`](parfait-cargo-sources.json) and [`rav1e-cargo-sources.json`](rav1e-cargo-sources.json)
 
@@ -126,7 +171,8 @@ meson install -C builddir
 - Change log: [`CHANGELOG.md`](CHANGELOG.md)
 - Roadmap: [`ROADMAP.md`](ROADMAP.md)
 - Contributor guide: [`CONTRIBUTING.md`](CONTRIBUTING.md)
-- Flathub notes: [`dev/FLATHUB-SUBMISSION-GUIDE.md`](dev/FLATHUB-SUBMISSION-GUIDE.md)
+- Native packaging notes: [`dev/LINUX-PACKAGING.md`](dev/LINUX-PACKAGING.md)
+- Release notes draft: [`dev/release-notes-v1.0.0.md`](dev/release-notes-v1.0.0.md)
 
 ## 🤝 Support
 

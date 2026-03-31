@@ -11,12 +11,12 @@
   <description>
     <p>
       Parfait is a modern, high-performance image converter for Linux that supports
-      all the latest image formats including WebP, AVIF, and HEIF, as well as traditional
+      modern image formats including WebP and AVIF, as well as traditional
       formats like PNG, JPEG, GIF, BMP, and TIFF.
     </p>
     <p>Features:</p>
     <ul>
-      <li>Support for modern formats: WebP, AVIF, HEIF</li>
+      <li>Support for modern formats: WebP and AVIF</li>
       <li>Traditional formats: PNG, JPEG, GIF, BMP, TIFF, ICO</li>
       <li>Batch conversion for processing multiple images at once</li>
       <li>Quality and compression controls for each format</li>
@@ -40,12 +40,16 @@
 
   <screenshots>
     <screenshot type="default">
-      <caption>Main window ready to accept images for conversion</caption>
-      <image>https://raw.githubusercontent.com/pinkpixel-dev/parfait/v1.0.0/data/screenshots/main-window.png</image>
+      <caption>Opening screen ready for drag-and-drop image selection</caption>
+      <image>https://raw.githubusercontent.com/pinkpixel-dev/parfait/v1.0.0/data/screenshots/opening-screen.png</image>
     </screenshot>
     <screenshot>
-      <caption>Batch conversion running with real-time progress tracking</caption>
-      <image>https://raw.githubusercontent.com/pinkpixel-dev/parfait/v1.0.0/data/screenshots/batch-processing.png</image>
+      <caption>Convert page with selected files and output settings</caption>
+      <image>https://raw.githubusercontent.com/pinkpixel-dev/parfait/v1.0.0/data/screenshots/convert-page.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Successful conversion message after processing the selected images</caption>
+      <image>https://raw.githubusercontent.com/pinkpixel-dev/parfait/v1.0.0/data/screenshots/conversion-success.png</image>
     </screenshot>
   </screenshots>
 
