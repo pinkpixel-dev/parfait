@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Parfait
+Comment=Convert images between modern and traditional formats
+Exec=@bindir@/parfait
+Icon=dev.pinkpixel.Parfait
+Terminal=false
+Type=Application
+Categories=Graphics;GTK;
+Keywords=image;convert;webp;avif;heif;batch;
+StartupNotify=true
+MimeType=image/png;image/jpeg;image/gif;image/webp;image/avif;image/heif;image/bmp;image/tiff;

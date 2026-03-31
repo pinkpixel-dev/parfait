@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2026 Pink Pixel -->
+<component type="desktop-application">
+  <id>@appid@</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>Apache-2.0</project_license>
+
+  <name>Parfait</name>
+  <summary>Convert images between modern and traditional formats</summary>
+
+  <description>
+    <p>
+      Parfait is a modern, high-performance image converter for Linux that supports
+      all the latest image formats including WebP, AVIF, and HEIF, as well as traditional
+      formats like PNG, JPEG, GIF, BMP, and TIFF.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Support for modern formats: WebP, AVIF, HEIF</li>
+      <li>Traditional formats: PNG, JPEG, GIF, BMP, TIFF, ICO</li>
+      <li>Batch conversion for processing multiple images at once</li>
+      <li>Quality and compression controls for each format</li>
+      <li>Custom output directory selection</li>
+      <li>Automatic dark mode support</li>
+      <li>Clean, modern interface following GNOME design patterns</li>
+      <li>Fast parallel processing for large batches</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">@appid@.desktop</launchable>
+
+  <developer id="dev.pinkpixel">
+    <name>Pink Pixel</name>
+  </developer>
+
+  <url type="homepage">https://pinkpixel.dev</url>
+  <url type="vcs-browser">https://github.com/pinkpixel-dev/parfait</url>
+  <url type="bugtracker">https://github.com/pinkpixel-dev/parfait/issues</url>
+  <url type="donation">https://www.buymeacoffee.com/pinkpixel</url>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main window ready to accept images for conversion</caption>
+      <image>https://raw.githubusercontent.com/pinkpixel-dev/parfait/v1.0.0/data/screenshots/main-window.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Batch conversion running with real-time progress tracking</caption>
+      <image>https://raw.githubusercontent.com/pinkpixel-dev/parfait/v1.0.0/data/screenshots/batch-processing.png</image>
+    </screenshot>
+  </screenshots>
+
+  <!-- Brand colors: light=PinkPixel pink, dark=icon blue. Preview at https://docs.flathub.org/banner-preview -->
+  <branding>
+    <color type="primary" scheme_preference="light">#f0569b</color>
+    <color type="primary" scheme_preference="dark">#c5286a</color>
+  </branding>
+
+  <content_rating type="oars-1.1" />
+
+  <releases>
+    <release version="1.0.0" date="2026-02-18">
+      <url type="details">https://github.com/pinkpixel-dev/parfait/releases/tag/v1.0.0</url>
+      <description>
+        <p>Initial release of Parfait</p>
+        <ul>
+          <li>Support for PNG, JPEG, WebP, AVIF, GIF, BMP, TIFF, and ICO formats</li>
+          <li>Batch conversion with parallel processing</li>
+          <li>Quality controls for all formats</li>
+          <li>Custom output directory selection</li>
+          <li>Drag-and-drop file support</li>
+          <li>Modern GTK4/Libadwaita interface with dark mode support</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </recommends>
+
+</component>
