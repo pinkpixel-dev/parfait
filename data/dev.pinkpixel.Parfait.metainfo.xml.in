@@ -59,7 +59,7 @@
 
   <releases>
     <release version="1.0.0" date="2026-02-18">
-      <url type="details">https://github.com/pinkpixel-dev/parfait/releases/tag/v1.0.0</url>
+      <url type="details">https://github.com/pinkpixel-dev/parfait/tree/v1.0.0</url>
       <description>
         <p>Initial release of Parfait</p>
         <ul>

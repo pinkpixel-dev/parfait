@@ -36,6 +36,11 @@ flatpak-builder --user --install --force-clean build-dir dev.pinkpixel.Parfait.y
 flatpak run dev.pinkpixel.Parfait
 ```
 
+The current manifest is pinned to the remote `v1.0.0` git tag so local Flatpak
+tests match the tagged release snapshot on GitHub. You do not need a published
+GitHub Release page for `flatpak-builder`; the pushed git tag is the important
+part.
+
 ## Coding Guidelines
 
 - Follow the existing Rust style and keep `cargo fmt` clean.
@@ -52,7 +57,8 @@ When you change functionality or packaging, update:
 - `OVERVIEW.md`
 - `ROADMAP.md`
 - `dev/OVERVIEW.md`
-- `dev/CHANGELOG.md`
+- `dev/ROADMAP.md`
+- `dev/FLATHUB-SUBMISSION-GUIDE.md`
 - relevant files in `dev/`
 
 ## Project Structure

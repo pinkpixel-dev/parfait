@@ -32,11 +32,23 @@ Parfait keeps the same Rust + GTK4 + Libadwaita foundation this project already 
 
 ### Flatpak
 
-Parfait is being prepared for Flathub with this app ID:
+Parfait is not on Flathub yet. The reserved app ID is:
 
 ```bash
-flatpak install flathub dev.pinkpixel.Parfait
+dev.pinkpixel.Parfait
 ```
+
+To build and install the tagged Flatpak locally:
+
+```bash
+flatpak-builder --user --install --force-clean build-dir dev.pinkpixel.Parfait.yml
+flatpak run dev.pinkpixel.Parfait
+```
+
+The manifest is now pinned to the remote `v1.0.0` git tag on
+`pinkpixel-dev/parfait`, so `flatpak-builder` packages the same tagged snapshot
+you pushed to GitHub. A published GitHub Release page is optional for this build
+path.
 
 ### Build from Source
 
@@ -104,6 +116,7 @@ meson install -C builddir
 - Cargo package: `parfait`
 - Desktop/Flatpak app ID: `dev.pinkpixel.Parfait`
 - Flatpak manifest: [`dev.pinkpixel.Parfait.yml`](dev.pinkpixel.Parfait.yml)
+- Flatpak manifest currently targets the remote `v1.0.0` git tag
 - Flatpak icon sources: `logo.png` -> `data/icons/dev.pinkpixel.Parfait-{16,32,48,64,128,512}.png` and `data/icons/dev.pinkpixel.Parfait.png` for `256x256`
 - Vendored cargo sources: [`parfait-cargo-sources.json`](parfait-cargo-sources.json) and [`rav1e-cargo-sources.json`](rav1e-cargo-sources.json)
 

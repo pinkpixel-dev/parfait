@@ -88,8 +88,8 @@ modules:
         CARGO_HOME: /run/build/parfait/cargo
     sources:
       - type: git
-        url: https://github.com/pinkpixel-dev/parfait
+        url: https://github.com/pinkpixel-dev/parfait.git
         tag: v1.0.0
-        commit: 52ef4e4ae3cc44447cf4ef9837b5eaac8542dc21
+        commit: 07f3198ca7fc79766304c5ee61937be20f721f83
       - parfait-cargo-sources.json
       - rav1e-cargo-sources.json
